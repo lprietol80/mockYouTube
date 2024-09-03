@@ -1,0 +1,298 @@
+/*CSS del header section*/
+
+
+.thumbnail {
+  width: 100%;
+ /*display: block; /*it goes from inline to block*//*but is not needed beause the grid*/
+  /*height: 295px; using only width, height  will be auto
+  object-fit: contain; // or cover
+  object-position: center; 
+  border-width: 2px;
+  border-style: solid;
+  border-color: red;*/
+}
+
+/*CSS del video*/ 
+
+
+.video-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 40px;
+}
+@media(max-width:750px) {
+  .video-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media(min-width:751px) and (max-width:999){
+  grid-template-columns: 1fr 1fr 1fr
+}
+@media(min-width:1000px){
+  .video-grid{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.video-title{
+  width: auto;
+  margin-top: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+/*When classes have the same info, we can separate them with a coma, for example: 
+.video-author,
+.video-stats{
+  display: inline-block;
+} (note: this display goes from block to inline, the opposite is inline to block)*/
+/*.video-preview{
+  width: 300px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 15px;  
+}*//*No needed because the grid*/
+
+body{
+  font-family: Roboto,Arial;
+  height: 3000px;
+  margin: 0;
+  padding-top: 80px;
+  padding-left: 96px;
+  padding-right: 24px;
+  background-color: rgb(248,248,248);
+}
+
+
+.video-info-grid{
+  display: grid;
+  grid-template-columns: 50px 1fr;
+}
+.profile-picture{
+  width: 70%;
+  border-radius: 50px;
+}
+.thumbnail-row{
+  margin-bottom: 8px;
+  position: relative;
+
+}
+.video-author,
+.video-stats {
+  font-size: 12px;
+  color: rgb(96, 96, 96);
+}
+.video-author{
+  margin-bottom: 4px;
+}
+
+
+.video-time{
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px;
+  border-radius: 2px;
+  background-color: black;
+  color: white;
+  position: absolute;
+  bottom: 8px;
+  right:5px
+}
+
+.header{
+  height: 55px;
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: white;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(228,228,228);
+  }
+  .sidebar{
+    background-color: white;
+    position: fixed;left: 0;
+    top:55px;
+    bottom: 0;
+    width: 75px;
+    z-index: 200;
+    padding-top: 5px;
+  }
+  .sidebar-link{
+    height: 74px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* with column justify and align work in reverse (justify =vertical and align=horizontal)*/
+    cursor: pointer;
+  }
+  .sidebar-link:hover{
+    background-color: rgb(235, 235, 235);
+  }
+  .sidebar-link img {
+    height: 25px;
+    margin-bottom: 4px;
+  }
+  .sidebar-link div {
+    font-size: 10px;
+  }
+
+
+  .left-section{
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+
+  .hamburgerIcon  {
+    height: 20px;
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  .youTubeLogo{
+    height: 20px;
+  }
+    
+  .middle-section{
+  flex:1;
+  margin-left:95px;
+  margin-right:30px;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+.search-bar{
+  flex: 1;
+  height: 34px;
+  padding-left: 10px;
+  font-size: 16px;
+  border: 1px solid rgb(192,192,192);
+  border-radius: 2px;
+  box-shadow: inset 1px 2px 3px rgba(0,0,0,0.2);
+  width: 0;
+}
+.search-bar::placeholder{
+  font-size: 16px;
+}
+.search-button{
+  height: 38px;
+  width: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(240,240,240);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(192,192,192);
+  margin-left: -1px;
+  margin-right: 10px;
+  
+}
+
+.search-button, 
+.voice-search-button, 
+.upload-icon-container,
+.youtube-apps-container,
+.notifications-icon-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.search-button .tooltip, .voice-search-button .tooltip,
+.upload-icon-container .tooltip,
+.youtube-apps-container .tooltip,
+.notifications-icon-container .tooltip{
+  position: absolute;
+  background-color: gray;
+  color: white;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  bottom: -30px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none; /*The Search tooltips is under the search botton,so this event is to deactivate the search tooltip when hoovering below search, it will appear when hovering over the search icon*/
+  white-space: nowrap;
+}
+.search-button:hover .tooltip, .voice-search-button:hover .tooltip,
+.upload-icon-container:hover .tooltip,
+.youtube-apps-container:hover .tooltip,
+.notifications-icon-container:hover .tooltip{
+  opacity: 1;
+}
+.search-icon{
+  height: 25px;
+
+}
+.voice-search-button{
+  height: 38px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  border: none;
+  border-radius:20px ;
+  }
+.voice-search-icon{
+  height: 25px;
+}
+
+  .right-section{ 
+  width:185px; 
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  margin-right: 20px;
+  flex-shrink: 0;  
+}
+.upload-icon{
+  height: 24px;  
+}
+.youtube-apps{
+  height: 24px;
+}
+
+.notifications-icon{
+  height: 24px;
+}
+.notifications-count{
+  position: absolute;
+  top:-2px;
+  right: -5px;
+  background-color: rgb(200,0,0);
+  color: white;
+  font-size: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 10px;
+
+}
+.current-user-picture{
+  height: 32px;
+  border-radius: 16px;
+}
+
+
+/*CSS de la parte general*/
+
+
+p {
+  margin-top: 0;
+  margin-bottom: 0; /* paragraph comes with margin at the top and bottom by default, so I changed it to 0*/
+}
